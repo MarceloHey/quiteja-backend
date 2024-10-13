@@ -1,4 +1,5 @@
 from flask import Blueprint, request, jsonify
+from models.models import User
 
 # Definir um blueprint para as rotas principais
 user = Blueprint("user", __name__, url_prefix="/user")
@@ -6,8 +7,6 @@ user = Blueprint("user", __name__, url_prefix="/user")
 
 @user.route("/", methods=["GET"])
 def list_users():
-    from .models import User
-
     users = User.query.all()  # Pega todos os usuários
     return jsonify(
         [{"id": u.id, "name": u.name, "cpf": u.cpf, "date": u.date} for u in users]
@@ -16,8 +15,7 @@ def list_users():
 
 @user.route("/", methods=["POST"])
 def create_user():
-    from .models import User
-    from . import db
+    from app import db
 
     # import ipdb
     # ipdb.set_trace()

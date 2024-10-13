@@ -1,6 +1,6 @@
 from sqlalchemy import Integer, String, Date, DateTime, func
 from sqlalchemy.orm import mapped_column
-from . import db
+from app import db
 
 
 class User(db.Model):
