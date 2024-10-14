@@ -1,8 +1,6 @@
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy.orm import DeclarativeBase
-from sqlalchemy import Integer, String, Date, DateTime, func
-from sqlalchemy.orm import mapped_column
 
 
 class Base(DeclarativeBase):
@@ -17,6 +15,7 @@ app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 
 # Inicializar o SQLAlchemy com a aplicação Flask
 db = SQLAlchemy(app=app)
+
 from routes.routes import user as user_routes
 
 app.register_blueprint(user_routes)
